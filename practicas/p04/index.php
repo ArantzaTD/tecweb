@@ -107,5 +107,41 @@
         // Liberar variables
         unset($a, $b, $c, $z);
     ?>
+
+    <h2>Ejercicio 4</h2>
+    <p>Lee y muestra los valores usando la matriz $GLOBALS:</p>
+    <?php
+        echo '<div class="code-output">';
+        
+        $a = "PHP5";
+        $z[] = &$a;
+        $b = "5a version de PHP";
+        $c = $b * 10;
+        $a .= $b;
+        $b *= $c;
+        $z[0] = "MySQL";
+        
+        echo '<h4>Valores usando $GLOBALS:</h4>';
+        echo "GLOBALS['a'] = "; var_dump($GLOBALS['a']); echo "<br/>";
+        echo "GLOBALS['b'] = "; var_dump($GLOBALS['b']); echo "<br/>";
+        echo "GLOBALS['c'] = "; var_dump($GLOBALS['c']); echo "<br/>";
+        echo "GLOBALS['z'] = "; var_dump($GLOBALS['z']); echo "<br/>";
+        
+        // Función usando global
+        function mostrarVariablesGlobal() {
+            global $a, $b, $c, $z;
+            echo '<h4>Valores usando modificador global:</h4>';
+            echo "a (global) = "; var_dump($a); echo "<br/>";
+            echo "b (global) = "; var_dump($b); echo "<br/>";
+            echo "c (global) = "; var_dump($c); echo "<br/>";
+            echo "z (global) = "; var_dump($z); echo "<br/>";
+        }
+        
+        mostrarVariablesGlobal();
+        echo '</div>';
+        
+        // Liberar variables
+        unset($a, $b, $c, $z);
+    ?>
 </body>
 </html>
