@@ -61,5 +61,51 @@
         // Liberar variables
         unset($a, $b, $c);
     ?>
+
+    <h2>Ejercicio 3</h2>
+    <p>Muestra el contenido de cada variable inmediatamente después de cada asignación:</p>
+    <?php
+        echo '<div class="code-output">';
+        
+        $a = "PHP5";
+        echo "Después de \$a = \"PHP5\":<br/>";
+        echo "a = "; var_dump($a); echo "<br/>";
+        
+        $z[] = &$a;
+        echo "Después de \$z[] = &\$a:<br/>";
+        echo "z = "; var_dump($z); echo "<br/>";
+        echo "a = "; var_dump($a); echo "<br/>";
+        
+        $b = "5a version de PHP";
+        echo "Después de \$b = \"5a version de PHP\":<br/>";
+        echo "b = "; var_dump($b); echo "<br/>";
+        
+        $c = $b * 10;
+        echo "Después de \$c = \$b * 10:<br/>";
+        echo "c = "; var_dump($c); echo "<br/>";
+        echo "Nota: \$b se convierte a 5 (conversión automática) y se multiplica por 10<br/>";
+        
+        $a .= $b;
+        echo "Después de \$a .= \$b:<br/>";
+        echo "a = "; var_dump($a); echo "<br/>";
+        echo "z = "; var_dump($z); echo "<br/>";
+        echo "Nota: Como z[0] es referencia a \$a, también cambia<br/>";
+        
+        $b *= $c;
+        echo "Después de \$b *= \$c:<br/>";
+        echo "b = "; var_dump($b); echo "<br/>";
+        echo "Nota: \$b (5) se multiplica por \$c (50) = 250<br/>";
+        
+        $z[0] = "MySQL";
+        echo "Después de \$z[0] = \"MySQL\":<br/>";
+        echo "z = "; var_dump($z); echo "<br/>";
+        echo "a = "; var_dump($a); echo "<br/>";
+        echo "Nota: Como z[0] es referencia a \$a, \$a también cambia a \"MySQL\"<br/>";
+        
+        echo '</div>';
+        
+        // Liberar variables
+        unset($a, $b, $c, $z);
+    ?>
 </body>
 </html>
