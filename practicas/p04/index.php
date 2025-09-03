@@ -143,5 +143,39 @@
         // Liberar variables
         unset($a, $b, $c, $z);
     ?>
+
+    <h2>Ejercicio 5</h2>
+    <p>Dar el valor de las variables $a, $b, $c al final del siguiente script:</p>
+    <?php
+        echo '<div class="code-output">';
+        
+        $a = "7 personas";
+        echo "Después de \$a = \"7 personas\":<br/>";
+        echo "a = "; var_dump($a); echo "<br/>";
+        
+        $b = (integer) $a;
+        echo "Después de \$b = (integer) \$a:<br/>";
+        echo "b = "; var_dump($b); echo "<br/>";
+        echo "Nota: Se extrae el número 7 del inicio de la cadena<br/>";
+        
+        $a = "9E3";
+        echo "Después de \$a = \"9E3\":<br/>";
+        echo "a = "; var_dump($a); echo "<br/>";
+        
+        $c = (double) $a;
+        echo "Después de \$c = (double) \$a:<br/>";
+        echo "c = "; var_dump($c); echo "<br/>";
+        echo "Nota: \"9E3\" se convierte a notación científica: 9000.0<br/>";
+        
+        echo '<h4>Valores finales:</h4>';
+        echo "a = "; var_dump($a); echo "<br/>";
+        echo "b = "; var_dump($b); echo "<br/>";
+        echo "c = "; var_dump($c); echo "<br/>";
+        echo '</div>';
+        
+        // Liberar variables
+        unset($a, $b, $c);
+    ?>
+
 </body>
 </html>
