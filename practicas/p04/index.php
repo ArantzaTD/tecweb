@@ -177,5 +177,45 @@
         unset($a, $b, $c);
     ?>
 
+    <h2>Ejercicio 6</h2>
+    <p>Dar y comprobar el valor booleano de las variables:</p>
+    <?php
+        echo '<div class="code-output">';
+        
+        $a = "0";
+        $b = "TRUE";
+        $c = FALSE;
+        $d = ($a OR $b);
+        $e = ($a AND $c);
+        $f = ($a XOR $b);
+        
+        echo '<h4>Valores booleanos con var_dump:</h4>';
+        echo "a = "; var_dump($a); echo "<br/>";
+        echo "b = "; var_dump($b); echo "<br/>";
+        echo "c = "; var_dump($c); echo "<br/>";
+        echo "d = "; var_dump($d); echo "<br/>";
+        echo "e = "; var_dump($e); echo "<br/>";
+        echo "f = "; var_dump($f); echo "<br/>";
+        
+        echo '<h4>Transformación de valores booleanos para mostrar con echo:</h4>';
+        echo "c usando var_export(): " . var_export($c, true) . "<br/>";
+        echo "e usando var_export(): " . var_export($e, true) . "<br/>";
+        echo "c usando (int): " . (int)$c . "<br/>";
+        echo "e usando (int): " . (int)$e . "<br/>";
+        echo "c usando json_encode(): " . json_encode($c) . "<br/>";
+        echo "e usando json_encode(): " . json_encode($e) . "<br/>";
+        
+        echo '<h4>Explicación de las operaciones lógicas:</h4>';
+        echo '<ul>';
+        echo '<li>$d = ($a OR $b): "0" OR "TRUE" = TRUE (cualquier valor no vacío es TRUE)</li>';
+        echo '<li>$e = ($a AND $c): "0" AND FALSE = FALSE (ambos deben ser TRUE)</li>';
+        echo '<li>$f = ($a XOR $b): "0" XOR "TRUE" = TRUE (solo uno debe ser TRUE)</li>';
+        echo '</ul>';
+        echo '</div>';
+        
+        // Liberar variables
+        unset($a, $b, $c, $d, $e, $f);
+    ?>
+
 </body>
 </html>
