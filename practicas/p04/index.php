@@ -217,5 +217,37 @@
         unset($a, $b, $c, $d, $e, $f);
     ?>
 
+
+<h2>Ejercicio 7</h2>
+    <p>Usando la variable predefinida $_SERVER, determina lo siguiente:</p>
+    <?php
+        echo '<div class="code-output">';
+        echo '<h4>Información del servidor y cliente:</h4>';
+        
+        // a. La versión de Apache y PHP
+        echo '<strong>a. Versión de Apache y PHP:</strong><br/>';
+        if (isset($_SERVER['SERVER_SOFTWARE'])) {
+            echo "Servidor: " . $_SERVER['SERVER_SOFTWARE'] . "<br/>";
+        } else {
+            echo "Información del servidor no disponible<br/>";
+        }
+        echo "Versión de PHP: " . phpversion() . "<br/><br/>";
+        
+        // b. El nombre del sistema operativo (servidor)
+        echo '<strong>b. Sistema operativo del servidor:</strong><br/>';
+        echo "SO: " . php_uname('s') . " " . php_uname('r') . "<br/>";
+        echo "Información completa: " . php_uname() . "<br/><br/>";
+        
+        // c. El idioma del navegador (cliente)
+        echo '<strong>c. Idioma del navegador:</strong><br/>';
+        if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            echo "Idiomas aceptados: " . $_SERVER['HTTP_ACCEPT_LANGUAGE'] . "<br/>";
+            $languages = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+            echo "Idioma principal: " . trim(explode(';', $languages[0])[0]) . "<br/>";
+        } else {
+            echo "Información de idioma no disponible<br/>";
+        }
+
+    ?>
 </body>
 </html>
