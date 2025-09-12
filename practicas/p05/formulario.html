@@ -1,5 +1,5 @@
 <!DOCTYPE html >
-<html>
+<html lang="es">
   <head>
     <meta charset="utf-8" >
     <title>Registro al Concurso</title>
@@ -27,12 +27,31 @@
         <label for="name">Nombre:</label>
         <input type="text" id="name" name="name" required>
       </li>
-        <li>Nombre:</li>
-
-    <li>Dirección de E-mail:</li>
-    <li>Número Telefónico:</li>
-    <li>Mis tenis son tan feos porque...</li>
-    </ul>
+      <li>
+        <label for="email">Dirección de E-mail:</label>
+        <input type="email" id="email" name="email" required>
+      </li>
+      <li>
+        <label for="phone">Número Telefónico:</label>
+        <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="55-1234-5678"
+            pattern="^[0-9\s\-\+\(\)]{10,}$"
+            required>
+        </li>
+        <li>
+          <label for="reason">Mis tenis son tan feos porque…</label><br>
+          <textarea
+            id="reason"
+            name="reason"
+            rows="4"
+            cols="60"
+            maxlength="240"
+            placeholder="Porque..."></textarea>
+        </li>
+      </ul>       
     </fieldset>
     
 
