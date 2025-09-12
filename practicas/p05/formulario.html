@@ -18,7 +18,7 @@
     <p>¿Quieres cambiar tus viejos tenis por un par personalizado de Tenis Mike&#174;?<br><br>Justifica el por qué tus tenis se <em>tienen que</em> ir y tú puedes ser uno de los diez afortunados ganadores.</p>
 
     <form action="http://52.43.117.247/neo/classroom/tw/concurso.php" method="post">
-    <p>Información del Participante</p>
+    <h2>Información del Participante</h2>
 
     <fieldset>
       <legend>Información Personal</legend>
@@ -53,46 +53,57 @@
         </li>
       </ul>       
     </fieldset>
-    
 
-    <h2>Diseña tus Mike personalizados:</h2>
+    <h3>Diseña tus Mike personalizados:</h3>
+    <fieldset>
+      <legend>Diseño personalizado del Tenis</legend>
+      
+      <fieldset>
+        <legend>Color <em> (escoge uno)</em>:</legend>
+        <ul style="list-style: none; padding-left: 0;">
+          <li><label><input type="radio" name="color" value="red" checked> Rojo</label></li>
+          <li><label><input type="radio" name="color" value="blue"> Azul</label></li>
+          <li><label><input type="radio" name="color" value="black"> Negro</label></li>
+          <li><label><input type="radio" name="color" value="silver"> Plateado</label></li>
+        </ul>
+      </fieldset>
 
-    <p>Diseño personalizado del Tenis</p>
-
-    <p>Color <em>(escoge uno)</em>:</p>
-      <ul style="list-style: none; padding-left: 0;">
-        <li><label><input type="radio" name="color" value="red" checked> Rojo</label></li>
-        <li><label><input type="radio" name="color" value="blue"> Azul</label></li>
-        <li><label><input type="radio" name="color" value="black"> Negro</label></li>
-        <li><label><input type="radio" name="color" value="silver"> Plateado</label></li>
-      </ul>
-
-    <p>Características <em>(escoge tantas como quieras)</em>:</p>
-      <ul  style="list-style: none; padding-left: 0;">
-      <li><label><input type="checkbox" name="features[]" value="laces"> Cordones brillantes</label></li>
+      
+      <fieldset>
+        <legend>Características <em>(escoge tantas como quieras)</em>:</legend>
+        <ul style="list-style: none; padding-left: 0;">
+          <li><label><input type="checkbox" name="features[]" value="laces"> Cordones brillantes</label></li>
           <li><label><input type="checkbox" name="features[]" value="metal_logo" checked> Logo metálico</label></li>
           <li><label><input type="checkbox" name="features[]" value="glow_sole"> Suela luminosa</label></li>
           <li><label><input type="checkbox" name="features[]" value="wifi"> WiFi integrado</label></li>
-      </ul>
+        </ul>
+      </fieldset>
 
-    <p>Talla</p>
-      <label for="size" class="sr-only">Las medidas reflejan el estándar masculino:</label>
-        <select name="size" id="size" size="1" required>
-          <option value="">— Selecciona —</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
+      
+      <fieldset>
+        <legend>Talla</legend>
+          <label for="size" class="sr-only">Las medidas reflejan el estándar masculino:</label>
+            <select name="size" id="size" size="1" required>
+              <option value="">— Selecciona —</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
         </select>
+      </fieldset>
+    </fieldset>
+
+
+  
 
     <p style="margin-top: 16px;">
-      <input type="submit" value="Enviar registro">
-      <input type="reset" value="Limpiar">
+      <input type="submit" value="¡Chidos mis Tenis!">
+      <input type="reset" value="Restablecer">
     </p>
   
   </form>
