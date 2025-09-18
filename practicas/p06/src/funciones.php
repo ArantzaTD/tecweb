@@ -47,5 +47,20 @@
         } while ($num % $divisor != 0);
         return $num;
     }
+
+//EJERCICIO4
+
+    function mostrarArregloAscii() {
+        $arreglo = [];
+        for ($i = 97; $i <= 122; $i++) {
+            $arreglo[$i] = chr($i);
+        }
+
+        echo "<table border='1'>";
+        foreach ($arreglo as $key => $value) {
+            echo "<tr><td>$key</td><td>$value</td></tr>";
+        }
+        echo "</table>";
+    }
         
 ?>
