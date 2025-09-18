@@ -30,5 +30,22 @@
         $total = $iteraciones * 3;
         echo "<b>$total números obtenidos en $iteraciones iteraciones</b><br>";
     }
+
+//EJERCICIO3
+    function buscarMultiploWhile($divisor) {
+        while (true) {
+            $num = rand(1,1000);
+            if ($num % $divisor == 0) {
+                return $num;
+            }
+        }
+    }
+
+    function buscarMultiploDoWhile($divisor) {
+        do {
+            $num = rand(1,1000);
+        } while ($num % $divisor != 0);
+        return $num;
+    }
         
 ?>
