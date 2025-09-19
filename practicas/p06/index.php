@@ -67,5 +67,20 @@
         echo validarEdadSexo($_POST['edad'], $_POST['sexo']);
     }
     ?>
+
+    <h2>EJERCICIO 6</h2>
+    <form action="http://localhost:8080/tecweb/practicas/p06/index.php" method="POST">
+        <label>Matrícula: </label>
+        <input type="text" name="matricula">
+        <input type="submit" name="buscar" value="Buscar">
+        <input type="submit" name="todos" value="Mostrar Todos">
+    </form>
+    <?php
+        if (isset($_POST['buscar']) && !empty($_POST['matricula'])) {
+            buscarVehiculo($_POST['matricula']);
+        } elseif (isset($_POST['todos'])) {
+            mostrarVehiculos();
+        }
+    ?>
 </body>
 </html>
