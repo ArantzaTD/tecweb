@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Registro de productos</title>
+  <title>Registro de Libros</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
@@ -13,8 +13,8 @@
     label{font-weight:600;display:block;margin-bottom:6px}
     .row{display:grid;gap:12px}
     @media (min-width:640px){ .row.cols-2{grid-template-columns:1fr 1fr} }
-    input, textarea{width:100%;padding:10px 12px;border:1px solid #d1d5db;border-radius:8px;font:inherit}
-    input:focus, textarea:focus{outline:2px solid #2563eb33;border-color:#2563eb}
+    input, select, textarea{width:100%;padding:10px 12px;border:1px solid #d1d5db;border-radius:8px;font:inherit}
+    input:focus, select:focus, textarea:focus{outline:2px solid #2563eb33;border-color:#2563eb}
     textarea{min-height:90px;resize:vertical}
     .note{font-size:.85rem;color:#6b7280;margin-top:4px}
     .actions{display:flex;gap:10px;margin-top:6px}
@@ -25,48 +25,55 @@
 </head>
 <body>
   <main class="wrap">
-    <h1>Registro de producto</h1>
+    <h1>Registro de Libros</h1>
 
         <form action="http://localhost:8080/tecweb/practicas/p08/set_producto_v2.php" method="post">
->
 
-      <div class="row cols-2">
+
+         <div class="row cols-2">
         <div>
-          <label for="nombre">Nombre *</label>
+          <label for="nombre">Título del libro*</label>
           <input id="nombre" name="nombre" type="text" required
                  maxlength="100"
                  pattern="^[\p{L}\p{N}\s\-\._#/&\(\)]+$"
                  title="Solo letras, números y signos comunes (.,-_#/&())"
-                 placeholder="Ej. Laptop 14&quot;">
+                 placeholder="Ej. Cien años de soledad">
           <div class="note">Máx. 100 caracteres.</div>
         </div>
 
         <div>
-          <label for="marca">Marca *</label>
-          <input id="marca" name="marca" type="text" required
-                 maxlength="50"
-                 pattern="^[\p{L}\p{N}\s\-\._#/&\(\)]+$"
-                 title="Solo letras, números y signos comunes"
-                 placeholder="Ej. Lenovo">
-          <div class="note">Máx. 50 caracteres.</div>
+          <label for="marca">Editorial *</label>
+          <select id="marca" name="marca" required>
+            <option>Penguin Random House</option>
+            <option>Grupo Planeta</option>
+            <option>HarperCollins</option>
+            <option>Alfaguara</option>
+            <option>Debolsillo</option>
+            <option>Editorial Porrúa</option>
+            <option>Fondo de Cultura Económica</option>
+            <option>Siglo XXI</option>
+            <option>Otro</option>
+          </select>
+          <div class="note">Elige uno de la lista</div>
         </div>
       </div>
 
       <div class="row cols-2">
         <div>
-          <label for="modelo">Modelo *</label>
+          <label for="modelo">Edición *</label>
           <input id="modelo" name="modelo" type="text" required
                  maxlength="50"
                  pattern="^[\p{L}\p{N}\-._#\/]+$"
-                 title="Letras, números y -,._#/"
-                 placeholder="Ej. L14-G3">
-          <div class="note">Máx. 50 caracteres.</div>
+                 title="Alfanumérico, máx 25 (letras, números, -,._#/, espacios)"
+                 placeholder="Ej. 2da Edición">
+          <div class="note">Alfanumérico, máx. 25 caracteres.</div>
         </div>
 
         <div>
           <label for="precio">Precio (MXN) *</label>
           <input id="precio" name="precio" type="number" required
-                 inputmode="decimal" step="0.01" min="0" placeholder="Ej. 12999.99">
+                 inputmode="decimal" step="0.01" min="0" placeholder="Ej. 1290.00">
+          <div class="note">Debe ser mayor a 99.99</div>       
         </div>
       </div>
 
@@ -80,21 +87,21 @@
         <div>
           <label for="imagen">Imagen (ruta o nombre)</label>
           <input id="imagen" name="imagen" type="text" maxlength="255"
-                 pattern="^$|^.+\.(png|jpg|jpeg|gif)$"
-                 title="Deja vacío o termina en .png, .jpg, .jpeg o .gif"
-                 placeholder="Ej. src/imagen.png">
-          <div class="note">Coloca tu archivo en <code>tecweb/practicas/p08/src/imagen.png</code> y usa esa ruta.</div>
+              pattern="^$|^.+\.(png|jpg|jpeg|gif)$"
+              title="Deja vacío o termina en .png, .jpg, .jpeg o .gif"
+              placeholder="Ej. src/portada.png">
+          <div class="note">Si lo dejas vacío, el servidor usará una imagen por defecto.</div>
         </div>
       </div>
 
       <div>
         <label for="detalles">Detalles</label>
-        <textarea id="detalles" name="detalles" maxlength="255"
-                  placeholder="Descripción breve (máx. 255 caracteres)"></textarea>
+        <textarea id="detalles" name="detalles" maxlength="250"
+                  placeholder="Descripción breve (máx. 250 caracteres)"></textarea>
       </div>
 
       <div class="actions">
-        <button class="primary" type="submit">Guardar producto</button>
+        <button class="primary" type="submit">Guardar Libro</button>
         <button class="ghost" type="reset">Limpiar</button>
       </div>
     </form>
@@ -118,16 +125,19 @@
       const detalles = trim($("#detalles").value);
       const imagen   = trim($("#imagen").value);
 
-      if (!nombre || nombre.length>100 || !patterns.textoComun.test(nombre)) { e.preventDefault(); alert("Nombre inválido."); return; }
-      if (!marca  || marca.length>50  || !patterns.textoComun.test(marca))   { e.preventDefault(); alert("Marca inválida."); return; }
-      if (!modelo || modelo.length>50 || !patterns.modelo.test(modelo))      { e.preventDefault(); alert("Modelo inválido."); return; }
-      if (isNaN(precio) || precio<0)   { e.preventDefault(); alert("Precio inválido."); return; }
-      if (!Number.isInteger(unidades) || unidades<0) { e.preventDefault(); alert("Unidades inválidas."); return; }
-      if (detalles.length>255)         { e.preventDefault(); alert("Detalles excede 255."); return; }
-      if (!patterns.imagen.test(imagen)) { e.preventDefault(); alert("Imagen debe ser .png/.jpg/.jpeg/.gif o vacía."); return; }
 
-      $("#nombre").value=nombre; $("#marca").value=marca; $("#modelo").value=modelo;
-      $("#detalles").value=detalles; $("#imagen").value=imagen;
+      if (!nombre || nombre.length>100 || !patterns.textoComun.test(nombre)) { e.preventDefault(); alert("El título es requerido (≤100)"); return; }
+      if (!marca) { e.preventDefault(); alert("Selecciona una editorial."); return; }
+      if (!modelo || modelo.length>25 || !patterns.modelo.test(modelo)) { e.preventDefault(); alert("Edición inválido (alfanumérico, ≤25)."); return; }
+      if (isNaN(precio) || !(precio > 99.99)) { e.preventDefault(); alert("El precio debe ser > 99.99."); return; }
+      if (detalles && detalles.length>250) { e.preventDefault(); alert("Detalles excede 250 caracteres."); return; }
+      if (!Number.isInteger(unidades) || unidades<0) { e.preventDefault(); alert("Unidades debe ser un entero ≥ 0."); return; }
+      if (!patterns.imagen.test(imagen)) { e.preventDefault(); alert("La imagen debe terminar en .png o estar vacía."); return; }
+
+      $("#nombre").value = nombre;
+      $("#modelo").value = modelo;
+      $("#detalles").value = detalles;
+      $("#imagen").value = imagen;
     });
   </script>
 </body>
