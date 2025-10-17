@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Product App</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 20px; }
+      nav { margin-bottom: 20px; display: flex; gap: 10px; align-items: center; }
+      input, textarea, button { padding: 6px; font-size: 14px; }
+      input[type="number"] { width: 100px; }
+      table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+      th, td { border: 1px solid #ccc; padding: 8px; vertical-align: top; }
+      thead { background: #f0f0f0; }
+      .form-row { margin-bottom: 10px; }
+      label { display: inline-block; width: 100px; }
+      textarea#description { width: 100%; max-width: 500px; height: 150px; }
+      hr { margin: 20px 0; }
+    </style>
+  </head>
+
+  <body onload="init()">
+    <h2>Product App</h2>
+
+    <!-- === BUSCAR PRODUCTOS === -->
+    <form onsubmit="return false;">
+      <input id="search" type="search" placeholder="Buscar por ID o texto" />
+      <button type="button" onclick="buscarID(event)">Buscar por ID</button>
+      <button type="button" onclick="buscarProducto(event)">Buscar por texto</button>
+    </form>
+
+    <hr />
+
+    <!-- === AGREGAR PRODUCTO === -->
+    <h3>Agregar Producto</h3>
+
+    <div class="form-row">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" placeholder="Ej. Café Americano" />
+    </div>
+
+    <div class="form-row">
+      <label for="precio">Precio:</label>
+      <input type="number" id="precio" step="0.01" value="0" />
+    </div>
+
+    <div class="form-row">
+      <label for="unidades">Unidades:</label>
+      <input type="number" id="unidades" step="1" value="1" />
+    </div>
+
+    <div class="form-row">
+      <label for="modelo">Modelo:</label>
+      <input type="text" id="modelo" placeholder="Ej. XX-000" />
+    </div>
+
+    <div class="form-row">
+      <label for="marca">Marca:</label>
+      <input type="text" id="marca" placeholder="Ej. Campus Coffee" />
+    </div>
+
+    <div class="form-row">
+      <label for="detalles">Detalles:</label>
+      <input type="text" id="detalles" placeholder="Ej. Producto recién tostado" />
+    </div>
+
+    <div class="form-row">
+      <label for="imagen">Imagen:</label>
+      <input type="text" id="imagen" placeholder="Ej. img/cafe.png" />
+    </div>
+
+    <button type="button" onclick="agregarProducto(event)">Agregar Producto</button>
+
+    <hr />
+
+    <!-- === JSON BASE (solo referencia) === -->
+    <h3>JSON de referencia</h3>
+    <textarea id="description" readonly></textarea>
+
+    <hr />
+
+    <!-- === TABLA DE RESULTADOS === -->
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody id="productos">
+        <tr><td colspan="3" style="text-align:center;">Sin resultados</td></tr>
+      </tbody>
+    </table>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
